@@ -1,13 +1,44 @@
 {
-    "m_SelectedDeviceId": "",
+    "m_SelectedDeviceId": "375955424e443498",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "375955424e443498",
+        "name": "com.Game2014_A2_LucasKrespi.Myproject",
+        "processId": 13585,
         "exited": false
     },
     "m_SelectedPriority": 0,
-    "m_KnownPackagesForSerialization": [],
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "375955424e443498",
+            "name": "com.Game2014_A2_LucasKrespi.Myproject",
+            "processId": 20580,
+            "exited": true
+        },
+        {
+            "deviceId": "375955424e443498",
+            "name": "com.Game2014_A2_LucasKrespi.Myproject",
+            "processId": 2826,
+            "exited": false
+        },
+        {
+            "deviceId": "375955424e443498",
+            "name": "com.Game2014_A2_LucasKrespi.Myproject",
+            "processId": 3590,
+            "exited": false
+        },
+        {
+            "deviceId": "375955424e443498",
+            "name": "com.Game2014_A2_LucasKrespi.Myproject",
+            "processId": 9146,
+            "exited": false
+        },
+        {
+            "deviceId": "375955424e443498",
+            "name": "com.Game2014_A2_LucasKrespi.Myproject",
+            "processId": 13585,
+            "exited": false
+        }
+    ],
     "m_Tags": {
         "m_Entries": [
             {
@@ -41,9 +72,20 @@
         ]
     },
     "m_MemoryViewerState": {
-        "MemoryWindowHeight": 0.0,
-        "MemoryWindowWidth": 0.0,
-        "MemoryTypeEnabled": [],
+        "MemoryWindowHeight": 300.0,
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
         "MemoryGroup": 2,
         "Behavior": 0
     },

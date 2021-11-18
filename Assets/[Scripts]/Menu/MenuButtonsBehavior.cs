@@ -9,13 +9,24 @@ public class MenuButtonsBehavior : MonoBehaviour
     public Button startButton, instructionButton, quitButton;   
     public void StartButtonOnClick()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void InstructionsButtonOnClick()
     {
-        Debug.Log("instructions");
+        SceneManager.LoadScene(1);
     }
+    public void MainMenuButtonOnClick()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    //temporary
+    public void GameOverButtonOnClick()
+    {
+        SceneManager.LoadScene(3);
+    }
+
 
     public void QuitButtonOnClick()
     {
