@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "375955424e443498",
         "name": "com.Game2014_A2_LucasKrespi.Myproject",
-        "processId": 13585,
+        "processId": 16089,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -36,6 +36,12 @@
             "deviceId": "375955424e443498",
             "name": "com.Game2014_A2_LucasKrespi.Myproject",
             "processId": 13585,
+            "exited": false
+        },
+        {
+            "deviceId": "375955424e443498",
+            "name": "com.Game2014_A2_LucasKrespi.Myproject",
+            "processId": 16089,
             "exited": false
         }
     ],
