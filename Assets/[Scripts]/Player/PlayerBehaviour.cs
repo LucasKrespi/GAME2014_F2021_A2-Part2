@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
+
 
 public class PlayerBehaviour : MonoBehaviour
 {
@@ -22,9 +26,22 @@ public class PlayerBehaviour : MonoBehaviour
     private Rigidbody2D rigidbody;
     private Animator animatorController;
 
+    [Header("HUD")]
+    [SerializeField]
+    private List<Image> livesList;
+    [SerializeField]
+    private TextMeshProUGUI scoreDisplay;
+    private int lives;
+    private int score;
+
+
+    private bool isImune = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        lives = 5;
+        score = 0;
         rigidbody = GetComponent<Rigidbody2D>();
         animatorController = GetComponent<Animator>(); 
     }
@@ -34,6 +51,8 @@ public class PlayerBehaviour : MonoBehaviour
     {
         Move();
         CheckIfGrounded();
+        updateDisplay(lives);
+        checkGameOver();
     }
 
     private void Move()
@@ -108,6 +127,31 @@ public class PlayerBehaviour : MonoBehaviour
     }
 
 
+    private void updateDisplay(int currentLives)
+    {
+        if (currentLives < 5)
+            livesList[currentLives].enabled = false;
+
+        scoreDisplay.text = "Score: " + score.ToString();
+    }
+
+    private void checkGameOver()
+    {
+        if(lives <= 0)
+        {
+            endGame();
+        }
+    }
+
+    private void endGame()
+    {
+        PlayerPrefs.SetInt("Score", score);
+        SceneManager.LoadScene(3);
+    }
+    public void addScore(int points)
+    {
+        score += points;
+    }
     // UTILITIES
 
     private void OnDrawGizmos()
@@ -122,6 +166,10 @@ public class PlayerBehaviour : MonoBehaviour
         {
             transform.SetParent(collision.transform);
         }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            StartCoroutine(GetHit());
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -132,4 +180,35 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Bullet"))
+        {
+            StartCoroutine(GetHit());
+        }
+        if (collision.CompareTag("Collectable"))
+        {
+            score += 100;
+        }
+        if (collision.CompareTag("Final"))
+        {
+            endGame();
+        }
+    }
+
+    IEnumerator GetHit()
+    {
+        if (!isImune)
+        {
+            isImune = true;
+            animatorController.SetBool("hit", true);
+
+            lives--;
+
+            yield return new WaitForSeconds(animatorController.GetCurrentAnimatorClipInfo(0).Length);
+
+            animatorController.SetBool("hit", false);
+            isImune = false;
+        }
+    }
 }

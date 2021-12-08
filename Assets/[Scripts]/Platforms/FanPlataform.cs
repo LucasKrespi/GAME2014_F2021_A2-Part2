@@ -11,7 +11,7 @@ public class FanPlataform : MonoBehaviour
     private float fanForce;
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         
         if(Object && isColliding)

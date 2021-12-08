@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platform
+  - Enemy
+  - Bullet
+  - Collectable
+  - Final
   layers:
   - Default
   - TransparentFX

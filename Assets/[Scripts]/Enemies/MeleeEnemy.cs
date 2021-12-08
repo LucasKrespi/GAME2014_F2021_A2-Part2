@@ -114,7 +114,8 @@ public class MeleeEnemy : MonoBehaviour
        {
             StartCoroutine(hitAndDie());
             collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, bounceForce));
-       }
+            collision.GetComponent<PlayerBehaviour>().addScore(150);
+        }
     }
 
     private void OnDrawGizmos()
@@ -135,7 +136,7 @@ public class MeleeEnemy : MonoBehaviour
     IEnumerator hitAndDie()
     {
         animatorController.SetBool("hit", true);
-        yield return new WaitForSeconds(0.18f);
+        yield return new WaitForSeconds(0.25f);
 
         Destroy(this.gameObject);
     }
