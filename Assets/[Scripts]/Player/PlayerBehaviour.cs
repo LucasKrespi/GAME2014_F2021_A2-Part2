@@ -34,6 +34,10 @@ public class PlayerBehaviour : MonoBehaviour
     private int lives;
     private int score;
 
+    [Header("Shoot")]
+    public GameObject bullet;
+    public Transform bulletSpawpoint;
+
 
     private bool isImune = false;
 
@@ -89,6 +93,10 @@ public class PlayerBehaviour : MonoBehaviour
 
             float mass = rigidbody.mass * rigidbody.gravityScale;
 
+            if (jump > 0)
+            {
+                SoundManager.soundManagerInstace.PlaySound("Jump");
+            }
 
             rigidbody.AddForce(new Vector2(horizontalMoveForce, jumpMoveForce) * mass);
             rigidbody.velocity *= 0.99f; // scaling / stopping hack
@@ -115,6 +123,21 @@ public class PlayerBehaviour : MonoBehaviour
         RaycastHit2D hit = Physics2D.CircleCast(groundOrigin.position, groundRadius, Vector2.down, groundRadius, groundLayerMask);
 
         isGrounded = (hit) ? true : false;
+    }
+
+    public void Shoot()
+    {
+        GameObject go = Instantiate(bullet, bulletSpawpoint.position, Quaternion.identity);
+
+        if(transform.localScale.x > 0)
+        {
+            go.GetComponent<Rigidbody2D>().velocity = new Vector2(10.0f, 0.0f) * 1;
+        }
+        else
+        {
+            go.GetComponent<Rigidbody2D>().velocity = new Vector2(10.0f, 0.0f) * -1;
+        }
+       
     }
 
     private float FlipAnimation(float x)
@@ -166,7 +189,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             transform.SetParent(collision.transform);
         }
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("EnemyRange") || collision.gameObject.CompareTag("EnemyMelee"))
         {
             StartCoroutine(GetHit());
         }
@@ -201,6 +224,7 @@ public class PlayerBehaviour : MonoBehaviour
         if (!isImune)
         {
             isImune = true;
+            SoundManager.soundManagerInstace.PlaySound("Pain");
             animatorController.SetBool("hit", true);
 
             lives--;

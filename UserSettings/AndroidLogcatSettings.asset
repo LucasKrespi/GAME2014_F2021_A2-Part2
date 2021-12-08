@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "375955424e443498",
+    "m_SelectedDeviceId": "emulator-5554",
     "m_SelectedPackage": {
-        "deviceId": "375955424e443498",
+        "deviceId": "emulator-5554",
         "name": "com.Game2014_A2_LucasKrespi.Myproject",
-        "processId": 16089,
+        "processId": 3102,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -42,6 +42,30 @@
             "deviceId": "375955424e443498",
             "name": "com.Game2014_A2_LucasKrespi.Myproject",
             "processId": 16089,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.Game2014_A2_LucasKrespi.Myproject",
+            "processId": 3104,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.Game2014_A2_LucasKrespi.Myproject",
+            "processId": 3314,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.Game2014_A2_LucasKrespi.Myproject",
+            "processId": 2930,
+            "exited": false
+        },
+        {
+            "deviceId": "emulator-5554",
+            "name": "com.Game2014_A2_LucasKrespi.Myproject",
+            "processId": 3102,
             "exited": false
         }
     ],

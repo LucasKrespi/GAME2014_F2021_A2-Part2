@@ -31,16 +31,15 @@ public class MeleeEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LookAhead();
-        LookForward();
-
-        MoveEnemy();
-
-   
+        
     }
 
     private void FixedUpdate()
     {
+        LookAhead();
+        LookForward();
+        MoveEnemy();
+
         if (rigidbody.velocity.x != 0)
         {
             animatorController.SetBool("run", true);
@@ -98,6 +97,7 @@ public class MeleeEnemy : MonoBehaviour
         {
             transform.SetParent(collision.transform);
         }
+       
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -115,7 +115,11 @@ public class MeleeEnemy : MonoBehaviour
             StartCoroutine(hitAndDie());
             collision.GetComponent<Rigidbody2D>().AddForce(new Vector2(0.0f, bounceForce));
             collision.GetComponent<PlayerBehaviour>().addScore(150);
-        }
+       }
+       if (collision.gameObject.CompareTag("BulletPlayer"))
+       {
+           StartCoroutine(hitAndDie());
+       }
     }
 
     private void OnDrawGizmos()
@@ -140,4 +144,5 @@ public class MeleeEnemy : MonoBehaviour
 
         Destroy(this.gameObject);
     }
+
 }

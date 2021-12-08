@@ -40,6 +40,11 @@ public class RangedEnemy : MonoBehaviour
         {
             canShooting = true;
         }
+
+        if (collision.tag == "BulletPlayer")
+        {
+            StartCoroutine(hitAndDie());
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -67,11 +72,12 @@ public class RangedEnemy : MonoBehaviour
         isShooting = false;
     }
 
-    IEnumerator hitAndDie()
+    public IEnumerator hitAndDie()
     {
         animatorController.SetBool("hit", true);
         yield return new WaitForSeconds(0.25f);
 
         Destroy(this.gameObject);
     }
+
 }

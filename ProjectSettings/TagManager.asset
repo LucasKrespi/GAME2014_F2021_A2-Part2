@@ -9,6 +9,9 @@ TagManager:
   - Bullet
   - Collectable
   - Final
+  - EnemyRange
+  - EnemyMelee
+  - BulletPlayer
   layers:
   - Default
   - TransparentFX
